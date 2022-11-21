@@ -1,5 +1,6 @@
 <?php 
 require_once 'connection.php';
+require_once './models/User.php';
 
 if (isset($_SESSION["user_login"]))
 {
@@ -9,14 +10,16 @@ if (isset($_SESSION["user_login"]))
         
     $mdp = $_POST['motdepasse'];
     $hash= password_hash($mdp, PASSWORD_DEFAULT );
-    $add = $pdo->prepare("INSERT INTO user (email, password) VALUES(:email, :motdepasse)");
-    $add->bindParam(':email',$_POST['email'] );
-    $add->bindParam(':motdepasse', $hash);
-    $add->execute();
+    
+    $user = new User ();
+    $user->setEmail($_POST['email']);
+    $user->setPassword($hash);
+    $user->insert();
+
     $registerconfirm = true;
 };
 
 
 require_once './views/register_view.php';
-unset($pdo);
+
 ?>
