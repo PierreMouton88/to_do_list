@@ -1,0 +1,15 @@
+verifs
+
+register :
+verifier que l'adresse mail est valide
+verifier que l'adresse n'existe pas deja dans la bdd
+verifier la securité du mdp
+masquer le mdp
+
+
+mettre le message en bas de confirmation.
+masquer ? ptet en js ?
+login
+
+verifier que l'adresse tapée est en format valide
+
