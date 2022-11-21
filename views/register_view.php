@@ -15,7 +15,7 @@
         <div>
         <h1> Inscription</h1>
         <div class='container'>
-            <form action='/checklist/register.php' method='post' class='text-center'>
+            <form action='/todolist/to_do_list/register.php' method='post' class='text-center'>
                 <div class='p-3'>
                     <label for='email'>Adresse mail : </label>
     
@@ -38,7 +38,7 @@
 
     <?php if(isset($registerconfirm) && $registerconfirm): ?>
 <div class='text-center fs-2 mt-3'> <span>Votre inscription a bien été enregistrée, merci beaucoup ! </span></div>
-<div class='text-center m-3'><a href='/checklist/login.php'><button type='button' class='btn btn-primary' data-bs-toggle='button' aria-pressed='false' autocomplete='off'> Se connecter </button></a></div>
+<div class='text-center m-3'><a href='/todolist/to_do_list/login.php'><button type='button' class='btn btn-primary' data-bs-toggle='button' aria-pressed='false' autocomplete='off'> Se connecter </button></a></div>
     <?php endif; ?>
         </div>
 </body>

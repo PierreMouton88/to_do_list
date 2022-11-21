@@ -21,9 +21,9 @@
                         
                         if (isset($_SESSION['connected'])) {
                             
-                            echo '<a class="nav-link" href="/checklist/logout.php">Se deconnecter </a>';
+                            echo '<a class="nav-link" href="/todolist/to_do_list/logout.php">Se deconnecter </a>';
                         } else {
-                            echo '<a class="nav-link" href="/checklist/login.php">Se connecter </a>';
+                            echo '<a class="nav-link" href="/todolist/to_do_list/login.php">Se connecter </a>';
                         }
                         ?>
                     </div>

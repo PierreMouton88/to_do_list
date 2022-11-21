@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-
+require_once './models/User.php';
 
 if (isset($_SESSION["user_login"]))
 {
@@ -9,7 +9,10 @@ if (isset($_SESSION["user_login"]))
 }
 $emailerror = ' ';
 $passworderror =' ';
-if(isset($_REQUEST['submit']))
+$user = new User ();
+$user->login();
+
+/*if(isset($_REQUEST['submit']))
     {
     $email = strip_tags($_REQUEST['email']);
     $password = strip_tags($_REQUEST['password']);
@@ -59,7 +62,8 @@ if(isset($_REQUEST['submit']))
                 catch(PDOException $e){
                   $e->getMessage();
                 }
-            } 
+            } */
+
 unset($pdo);
 require_once './views/login_view.php';
         ?>

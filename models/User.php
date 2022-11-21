@@ -38,16 +38,93 @@ public function getId() : int
     }
     public function insert()
     {
-       $cnx = new Connexion();
-       $pdo = $cnx->getPdo();
+        $db_host = "localhost";
+        $db_user = "root";
+        $db_password = "";
+        $db_name = "checklist";
+        
+        try 
+        {
+        
+            $pdo = new PDO ('mysql:host=localhost;dbname=checklist',$db_user,$db_password );
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
+        catch(PDOException $e){
+        $e->getMessage();
+        }
+
 
         $stmt = $pdo->prepare("INSERT INTO user (`email`, `password`) VALUES (:email, :password)");
         $stmt->execute([
             'email' => $this->email,
             'password' => $this->password
-        ]);
+        ]);}
+        public function login(){
 
-}}
+      
+    $this->email = strip_tags($this->email);
+    $this->password = strip_tags($this->password);
+    
+    if(empty($email)){
+        $emailerror="Veuillez entrer un email";
+    } else if (empty($password)){
+        $passworderror="Veuillez entrer un mot de passe";
+    }        else
+        {
+            try {
+                $db_host = "localhost";
+$db_user = "root";
+$db_password = "";
+$db_name = "checklist";
+
+try 
+{
+
+    $pdo = new PDO ('mysql:host=localhost;dbname=checklist',$db_user,$db_password );
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+}
+catch(PDOException $e){
+$e->getMessage();
+};
+        $stmt =$pdo->prepare("SELECT * from user WHERE email=:user_email");
+        $stmt->execute([':user_email'=>strip_tags($this->email)]);
+        $id=$stmt->fetch();
+        $hash = $id["password"];
+                    if ($stmt->rowCount()>0)
+                    {
+                        
+                        if($email==$id['email'])
+                        {          $this->email= $id['email'];     
+                            if (password_verify($password,$hash ))
+                            {
+                                echo "salut";
+                                $_SESSION["connected"]= true;
+                                $_SESSION['id']= $id;
+                                $_SESSION['id_user']=$id['id_user'];
+                                $_SESSION["user_login"]=true;
+                                $loginMsg = "connection réussie !";
+                                header('Location: index.php');
+                            }
+                            else
+                            {
+                               
+                            }
+                        }  
+                        else
+                        {
+                            
+                        } 
+                    } else
+                    {
+                  
+                } 
+            }
+                catch(PDOException $e){
+                  $e->getMessage();
+                }
+            } }}
 
 
+            require_once './views/login_view.php';
 ?>
+

@@ -27,7 +27,7 @@
             if($_SESSION['edit']): ?>
             <div>
                <h2 class="text-center">La modification a bien été effectuée ! </h2>
-               <div class='text-center m-3'><a href='/checklist/index.php'><button type='button' class='btn btn-primary' data-bs-toggle='button' aria-pressed='false' autocomplete='off'> Revenir à l'accueil </button></a></div>";
+               <div class='text-center m-3'><a href='/todolist/to_do_list/index.php'><button type='button' class='btn btn-primary' data-bs-toggle='button' aria-pressed='false' autocomplete='off'> Revenir à l'accueil </button></a></div>";
             </div>
             <?php endif;}
             $_SESSION['edit']= false?>
